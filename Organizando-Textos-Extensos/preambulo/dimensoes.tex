@@ -1,0 +1,97 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% Pequena introdução sobre comandos para dimensões
+%%% do papel, margens, etc., pelo memoir
+%%%
+%%% Para mais explicação e informações de comandos
+%%% leia a documentação do memoir: memman.pdf
+%%% http://texdoc.net/texmf-dist/doc/latex/memoir/memman.pdf
+%%%
+%%% \setstocksize{Altura}{Largura} %Define dimensões do papel
+%%%
+%%% \settrimmedsize{Altura}{Largura}{Razão} 
+%%% Define a área a ser
+%%% utilizada para o texto, figuras. Caso este comando não 
+%%% esteja definido, memoir utilizará toda a dimensão do papel.
+%%% Apenas um ou dois valores são necessários. Os outros, se
+%%% não especificados, devem ser *.
+%%%
+%%% \setpagecc{\paperheight}{\paperwidth}{*} %
+%%% O comando, deste jeito centralizará a área do texto no papel
+%%%
+%%% \setlrmarginsandblock{Marg. Dir.}{Marg. Esq.}{Razão}
+%%% Define as margens direta e esquerda.
+%%% Apenas um ou dois valores são necessários. Os outros, se
+%%% não especificados, devem ser *
+%%%
+%%% \setulmarginsandblock{Margem Sup.}{Margem Inf.}{Razão}
+%%% Define as margens superio e inferior.
+%%% Apenas um ou dois valores são necessários. Os outros, se
+%%% não especificados, devem ser *.
+%%%
+%%% \checkandfixthelayout 
+%%% Este comando calcula corretamente os parâmetros pedidos 
+%%% e diz se há erro ou não. É sempre necessário ao final dos 
+%%% comandos para setar as dimensões do papel desta maneira, 
+%%% com memoir.
+%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\def\PapelA{%
+% Uncomment to manually set the stock size and override the setting in \documentclass. 
+%\setstocksize{24cm}{17cm}
+% Change the trimmed area size or comment out this line entirely to fit the content to the paper size without trimming.
+\settrimmedsize{24cm}{17cm}{*}
+% The first bracket specifies the spine margin, the second the edge margin and the third the ratio of the spine to the edge. Only one or two values are required and the remaining one(s) can be a star (*) to specify it is not needed.
+\setlrmarginsandblock{22mm}{*}{0.9}
+% The first bracket specifies the upper margin, the second the lower margin and the third the ratio of the upper to the lower. Only one or two values are required and the remaining one(s) can be a star (*) to specify it is not needed.
+\setulmarginsandblock{26mm}{20mm}{*}
+
+
+% The size of marginal notes, the three values in curly brackets are \marginparsep, \marginparwidth and \marginparpush.
+\setmarginnotes{17pt}{51pt}{\onelineskip}
+% Sets the space available for the header and footer
+\setheadfoot{\onelineskip}{2\onelineskip}
+% Sets the spacing above and below the header
+\setheaderspaces{*}{2\onelineskip}{*}
+
+
+% Sets the spacing above the trimmed area, i.e. moved the trimmed area down the page if positive.
+\setlength{\trimtop}{0pt}
+
+
+% Comment the two lines below to reverse the position of the trimmed content on the stock paper, i.e. odd pages will have content on the right side instead of the left and even pages will have content on the left side instead of the right.
+\setlength{\trimedge}{\stockwidth}
+\addtolength{\trimedge}{-\paperwidth}
+
+% To bring content to center.
+\addtolength{\trimtop}{2.85cm}
+% To bring content to center.
+\addtolength{\trimedge}{-2cm}
+
+% Display other style of trim marks.
+\quarkmarks
+
+% Put jobname in left top trim mark.
+\renewcommand*{\tmarktl}{\registrationColour{%
+  \begin{picture}(0,0)
+    \setlength{\unitlength}{1bp}\thicklines
+    \put(-36,0){\line(1,0){24}}
+    \put(0,12){\line(0,1){24}}
+    \put(3,27){\normalfont\ttfamily\fontsize{8bp}{10bp}\selectfont\jobname\ \
+      \today\ \ \printtime\ \ Sheet \thesheetsequence}
+  \end{picture}}}
+
+
+% Makes sure your specifications are correct and implements them in the document.
+\checkandfixthelayout
+}%
+
+\def\A4paperUL30BR30-A{%
+\setstocksize{297mm}{210mm}
+\settrimmedsize{297mm}{210mm}{*}
+\setpagecc{\paperheight}{\paperwidth}{*}
+\setlrmarginsandblock{30mm}{20mm}{*}
+\setulmarginsandblock{30mm}{20mm}{*}
+\checkandfixthelayout
+}%
