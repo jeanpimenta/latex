@@ -1,0 +1,75 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% Template criado por Jean Pimenta
+%%%                v0.1
+%%%      youtube.com/jeanpimenta
+%%%     www.jeanpimenta.com/latex/
+%%%     
+%%%
+%%% Todo o projeto foi compilado com XeLaTeX.
+%%%
+%%% Chamados de pacotes e definições se encontram
+%%% na pasta preâmbulo dentro do projeto.
+%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\documentclass[12pt,showtrims]{memoir}
+
+\usepackage{import}
+
+% input: adiciona as linhas do arquivo chamado dentro do arquivo 
+% onde é escrito. Não é possível chamar outro arquivo dentro do
+% qual já o chama via input.
+%
+% include: o mesmo que input, mas adiciona um \clearpage antes
+% de importar as linhas do arquivo chamado. Há relatos de pro-
+% blemas com importação de referências ao se usar include.
+%
+% import: com uso do pacote import. Chama as linhas do arquivo
+% e pode concatenar vários arquivos dentro de outros com o
+% comando subimport
+%
+%\input{preambulo/dimensoes}
+%\input{preambulo/fontes}
+
+\import{preambulo/}{dimensoes}
+\import{preambulo/}{fontes}
+% Aviso: dependendo das fontes que for usar no arquivo 'geral',
+% pode ser que estes tenha de vir antes de pacotes chamados no
+% arquivo 'fontes'. Esteja atento para tais situações e tomar
+% as medidas necessárias.
+%\input{preambulo/geral.tex}
+
+\import{preambulo/}{geral}
+
+\A4paperUL30BR30-A
+% Comando definido no arquivo 'dimensoes' para tamanho de papel,
+% margens, bloco de texto, etc
+
+\begin{document}
+
+%\blindmathtrue
+%\blindtext[5]
+%\blinditemize
+%\blindenumerate
+%\blinddescription
+%\blindmathpaper
+
+%\input{documentos/1.tex}
+%\input{documentos/1.1.tex}
+%\input{documentos/1.2.tex}
+%\input{documentos/2.tex}
+
+%\include{documentos/1.tex}
+%\include{documentos/1.1.tex}
+%\include{documentos/1.2.tex}
+%\include{documentos/2.tex}
+
+%\import{documentos/}{1}
+%\import{documentos/}{1.1}
+%\import{documentos/}{1.2}
+%\import{documentos/}{2}
+
+\import{documentos/}{1a}
+\import{documentos/}{2}
+
+\end{document}
